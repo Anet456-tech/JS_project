@@ -1,9 +1,7 @@
 // ===== WORD SCRAMBLE GAME WITH LEVELS =====
-
-// 🎚 WORD LISTS FOR EACH LEVEL
 const wordLists = {
   easy: ["cat", "dog", "book", "pen", "apple", "ball", "car", "fish", "milk", "tree"],
-  medium: ["penci", "grapes", "pillow", "school", "planet", "flower", "garden", "purple", "silver", "cookie"],
+  medium: ["pencil", "grapes", "pillow", "school", "planet", "flower", "garden", "purple", "silver", "cookie"],
   hard: ["watermelon", "pineapple", "computer", "mountain", "milkshake", "dinosaur", "notebook", "rainbow", "umbrella", "hospital"]
 };
 
@@ -11,7 +9,7 @@ const wordLists = {
 let currentWord = "";
 let scrambled = "";
 let score = 0;
-let timeLeft = 30;
+let timeLeft = 20;
 let timerInterval;
 let currentLevel = "easy";
 
@@ -23,8 +21,9 @@ const checkBtn = document.getElementById("check-btn");
 const nextBtn = document.getElementById("next-btn");
 const restartBtn = document.getElementById("restart-btn");
 const scoreDisplay = document.getElementById("score");
-const timerDisplay = document.getElementById("timer");
-const levelSelect = document.getElementById("level");
+const timerDisplay = document.getElementById("time");
+const levelSlider = document.getElementById("level");
+const levelLabel = document.getElementById("level-label");
 
 // ===== SHUFFLE WORD FUNCTION =====
 function shuffleWord(word) {
@@ -41,28 +40,35 @@ function newWord() {
   const words = wordLists[currentLevel];
   message.textContent = "";
   guessInput.value = "";
+  enableGame();
   currentWord = words[Math.floor(Math.random() * words.length)];
   scrambled = shuffleWord(currentWord);
-  if (scrambled === currentWord) scrambled = shuffleWord(currentWord);
+  while (scrambled === currentWord) {
+    scrambled = shuffleWord(currentWord);
+  }
   scrambledWordDisplay.textContent = scrambled;
 }
 
 // ===== TIMER FUNCTION =====
 function startTimer() {
   clearInterval(timerInterval);
-  if (currentLevel === "easy") timeLeft = 30;
-  else if (currentLevel === "medium") timeLeft = 25;
-  else timeLeft = 20;
 
-  timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+  if (currentLevel === "easy") timeLeft = 20;
+  else if (currentLevel === "medium") timeLeft = 30;
+  else if (currentLevel === "hard") timeLeft = 50;
+
+  timerDisplay.textContent = timeLeft;
+  enableGame();
 
   timerInterval = setInterval(() => {
     timeLeft--;
-    timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+    timerDisplay.textContent = timeLeft;
+
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
       message.textContent = "⏰ Time’s up! Click Restart.";
       message.style.color = "red";
+      scrambledWordDisplay.textContent = currentWord.toUpperCase();
       disableGame();
     }
   }, 1000);
@@ -72,21 +78,23 @@ function startTimer() {
 function disableGame() {
   guessInput.disabled = true;
   checkBtn.disabled = true;
+  nextBtn.disabled = true;
 }
 
 function enableGame() {
   guessInput.disabled = false;
   checkBtn.disabled = false;
+  nextBtn.disabled = false;
 }
 
 // ===== CHECK USER'S GUESS =====
 checkBtn.addEventListener("click", () => {
-  const guess = guessInput.value.toLowerCase();
+  const guess = guessInput.value.toLowerCase().trim();
   if (guess === currentWord) {
     message.textContent = "✅ Correct!";
     message.style.color = "green";
     score++;
-    scoreDisplay.textContent = `Score: ${score}`;
+    scoreDisplay.textContent = score;
     newWord();
   } else {
     message.textContent = "❌ Try again!";
@@ -100,18 +108,21 @@ nextBtn.addEventListener("click", newWord);
 // ===== RESTART GAME =====
 restartBtn.addEventListener("click", () => {
   score = 0;
-  scoreDisplay.textContent = `Score: ${score}`;
-  enableGame();
+  scoreDisplay.textContent = score;
   newWord();
   startTimer();
 });
 
-// ===== CHANGE LEVEL =====
-levelSelect.addEventListener("change", () => {
-  currentLevel = levelSelect.value;
+// ===== LEVEL SLIDER CHANGE =====
+levelSlider.addEventListener("input", () => {
+  const val = parseInt(levelSlider.value);
+  if (val === 1) currentLevel = "easy";
+  else if (val === 2) currentLevel = "medium";
+  else if (val === 3) currentLevel = "hard";
+
+  levelLabel.textContent = currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1);
   score = 0;
-  scoreDisplay.textContent = `Score: ${score}`;
-  enableGame();
+  scoreDisplay.textContent = score;
   newWord();
   startTimer();
 });
@@ -119,4 +130,3 @@ levelSelect.addEventListener("change", () => {
 // ===== START GAME =====
 newWord();
 startTimer();
-

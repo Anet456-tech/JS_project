@@ -1,4 +1,5 @@
 /* 🌸 BASIC PAGE SETUP */
+/* ================== GLOBAL STYLES ================== */
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, #a8edea, #fed6e3); /* soft pastel gradient */
@@ -29,8 +30,67 @@ h1 {
   letter-spacing: 1px;
 }
 
+/* 💻 LEVEL SELECTION */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+#level {
+  padding: 8px 12px;
+  font-size: 1em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+/* slider styling */
+/* Slider container */
+#level {
+  width: 30%;
+  margin: 15px 0 25px 0;
+  -webkit-appearance: none;
+  height: 6px;          /* reduced thickness */
+  border-radius: 5px;
+  background: linear-gradient(to right, #4caf50 0%, #ffeb3b 50%, #f44336 100%);
+  outline: none;
+}
+
+/* Slider thumb */
+#level::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;          /* smaller thumb */
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #333;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#level::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #333;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Labels for slider ends (optional visual guide) */
+label span {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+
+
 /* 💯 SCORE & TIMER */
-#score, #timer {
+#score, #time {
   font-weight: bold;
   color: #444;
   margin: 8px 0;
@@ -48,7 +108,7 @@ h1 {
 }
 
 /* 💬 INPUT BOX */
-input {
+input#guess {
   padding: 10px;
   font-size: 1em;
   width: 85%;
@@ -58,7 +118,7 @@ input {
   transition: all 0.3s ease;
 }
 
-input:focus {
+input#guess:focus {
   outline: none;
   border-color: #ff6f61;
   box-shadow: 0 0 5px #ff6f61;
@@ -112,7 +172,11 @@ button:active {
     letter-spacing: 5px;
   }
 
-  input {
+  input#guess {
+    width: 90%;
+  }
+
+  #level {
     width: 90%;
   }
 }
