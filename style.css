@@ -2,7 +2,7 @@
 /* ================== GLOBAL STYLES ================== */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #a8edea, #fed6e3); /* soft pastel gradient */
+  background: linear-gradient(135deg, #324182, #b1c3dd); /* soft pastel gradient */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@ body {
 
 /* 🎮 MAIN GAME BOX */
 .game-container {
-  background-color: #ffffff;
+  background-color: #cddede;
   padding: 40px 50px;
   border-radius: 20px;
   text-align: center;
@@ -24,7 +24,7 @@ body {
 
 /* 🧩 GAME TITLE */
 h1 {
-  color: #333;
+  color: #041a36db;
   margin-bottom: 15px;
   font-size: 2em;
   letter-spacing: 1px;
@@ -35,7 +35,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 500;
-  color: #555;
+  color: #535151;
 }
 
 #level {
@@ -131,15 +131,15 @@ button {
   border: none;
   border-radius: 10px;
   font-weight: bold;
-  color: white;
-  background: linear-gradient(135deg, #ff6f61, #de6262);
+  color: rgb(240, 234, 234);
+  background: linear-gradient(135deg, #921308, #920707);
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
 }
 
 button:hover {
   transform: scale(1.05);
-  background: linear-gradient(135deg, #de6262, #ff6f61);
+  background: linear-gradient(135deg, #981d1d, #951408);
 }
 
 button:active {
