@@ -1,4 +1,3 @@
-// ===== WORD SCRAMBLE GAME WITH LEVELS =====
 const wordLists = {
   easy: ["cat", "dog", "book", "pen", "apple", "ball", "car", "fish", "milk", "tree"],
   medium: ["pencil", "grapes", "pillow", "school", "planet", "flower", "garden", "purple", "silver", "cookie"],
@@ -28,7 +27,7 @@ const levelLabel = document.getElementById("level-label");
 // ===== SHUFFLE WORD FUNCTION =====
 function shuffleWord(word) {
   let arr = word.split("");
-  for (let i =letters.length - 1; i > 0; i--) {
+  for (let i = arr.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
