@@ -3,8 +3,8 @@
 // 🎚 WORD LISTS FOR EACH LEVEL
 const wordLists = {
   easy: ["cat", "dog", "book", "pen", "apple", "ball", "car", "fish", "milk", "tree"],
-  medium: ["banana", "grapes", "orange", "school", "planet", "flower", "garden", "purple", "silver", "cookie"],
-  hard: ["elephant", "pineapple", "computer", "mountain", "airplane", "dinosaur", "notebook", "rainbow", "umbrella", "hospital"]
+  medium: ["penci", "grapes", "pillow", "school", "planet", "flower", "garden", "purple", "silver", "cookie"],
+  hard: ["watermelon", "pineapple", "computer", "mountain", "milkshake", "dinosaur", "notebook", "rainbow", "umbrella", "hospital"]
 };
 
 // ===== GAME VARIABLES =====
@@ -119,3 +119,4 @@ levelSelect.addEventListener("change", () => {
 // ===== START GAME =====
 newWord();
 startTimer();
+
