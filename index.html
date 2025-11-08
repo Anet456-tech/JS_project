@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word Scramble Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <h1>Scramble Master 🧩</h1>
+    <h5>Unscramble the letters before time runs out!</h5>
+
+    <!-- Scrambled letters will appear here -->
+    <div class="scrambled-word"></div>
+
+    <!-- Input box for user guess -->
+    <input type="text" placeholder="Your guess here">
+
+    <!-- Check and Next buttons -->
+    <div class="buttons">
+      <button class="check-btn">Check</button>
+      <button class="next-btn">Next</button>
+    </div>
+
+    <!-- Message for feedback -->
+    <p class="message"></p>
+
+    <!-- Score display -->
+    <p class="score">Score: 0</p>
+
+    <!-- Timer display -->
+    <p class="timer">Time left: <span id="time">30</span>s</p>
+  </div>
+
+  <!-- Link to your JavaScript logic -->
+  <script src="script.js"></script>
+</body>
+</html>
