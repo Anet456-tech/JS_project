@@ -4,7 +4,7 @@ const wordLists = {
   hard: ["watermelon", "pineapple", "computer", "mountain", "milkshake", "dinosaur", "notebook", "rainbow", "umbrella", "hospital"]
 };
 
-// ===== GAME VARIABLES =====
+// GAME VARIABLES 
 let currentWord = "";
 let scrambled = "";
 let score = 0;
@@ -12,7 +12,7 @@ let timeLeft = 20;
 let timerInterval;
 let currentLevel = "easy";
 
-// ===== DOM ELEMENTS =====
+//DOM ELEMENTS
 const scrambledWordDisplay = document.getElementById("scrambled-word");
 const guessInput = document.getElementById("guess");
 const message = document.getElementById("message");
@@ -24,7 +24,7 @@ const timerDisplay = document.getElementById("time");
 const levelSlider = document.getElementById("level");
 const levelLabel = document.getElementById("level-label");
 
-// ===== SHUFFLE WORD FUNCTION =====
+//  SHUFFLE WORD FUNCTION 
 function shuffleWord(word) {
   let arr = word.split("");
   for (let i = arr.length - 1; i > 0; i--) {
@@ -34,7 +34,7 @@ function shuffleWord(word) {
   return arr.join("");
 }
 
-// ===== PICK A NEW WORD BASED ON LEVEL =====
+//  PICK A NEW WORD 
 function newWord() {
   const words = wordLists[currentLevel];
   message.textContent = "";
@@ -48,7 +48,7 @@ function newWord() {
   scrambledWordDisplay.textContent = scrambled;
 }
 
-// ===== TIMER FUNCTION =====
+//  TIMER FUNCTION 
 function startTimer() {
   clearInterval(timerInterval);
 
@@ -73,7 +73,7 @@ function startTimer() {
   }, 1000);
 }
 
-// ===== DISABLE / ENABLE INPUT =====
+//  DISABLE / ENABLE INPUT
 function disableGame() {
   guessInput.disabled = true;
   checkBtn.disabled = true;
@@ -86,7 +86,7 @@ function enableGame() {
   nextBtn.disabled = false;
 }
 
-// ===== CHECK USER'S GUESS =====
+//  CHECK USER'S GUESS 
 checkBtn.addEventListener("click", () => {
   const guess = guessInput.value.toLowerCase().trim();
   if (guess === currentWord) {
@@ -101,10 +101,10 @@ checkBtn.addEventListener("click", () => {
   }
 });
 
-// ===== NEXT WORD BUTTON =====
+//  NEXT WORD BUTTON 
 nextBtn.addEventListener("click", newWord);
 
-// ===== RESTART GAME =====
+//  RESTART GAME 
 restartBtn.addEventListener("click", () => {
   score = 0;
   scoreDisplay.textContent = score;
@@ -112,7 +112,7 @@ restartBtn.addEventListener("click", () => {
   startTimer();
 });
 
-// ===== LEVEL SLIDER CHANGE =====
+//  LEVEL SLIDER CHANGE
 levelSlider.addEventListener("input", () => {
   const val = parseInt(levelSlider.value);
   if (val === 1) currentLevel = "easy";
@@ -126,6 +126,6 @@ levelSlider.addEventListener("input", () => {
   startTimer();
 });
 
-// ===== START GAME =====
+//  START GAME 
 newWord();
 startTimer();
